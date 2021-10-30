@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:weatherforecast/data/repository/local/location_manager.dart';
+import 'package:weatherforecast/data/repository/local/location_provider.dart';
+import 'package:weatherforecast/data/repository/local/storage_manager.dart';
+import 'package:weatherforecast/data/repository/local/storage_provider.dart';
+import 'package:weatherforecast/ui/navigation/navigation_provider.dart';
 
 void main() {
   runApp(MyApp());
 }
 
+class FeatherApp extends StatefulWidget {
+  const FeatherApp({Key? key}) : super(key: key);
+
+  @override
+  _FeatherAppState createState() => _FeatherAppState();
+}
+
+class _FeatherAppState extends State<FeatherApp> {
+  final NavigationProvider _navigation = NavigationProvider();
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
+  final LocationManager _locationManager = LocationManager(LocationProvider());
+  final StorageManager _storageManager = StorageManager(StorageProvider());
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
+}
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
