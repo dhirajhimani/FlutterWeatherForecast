@@ -23,7 +23,10 @@ class NavigationBloc extends Bloc<NavigationEvent, NavigationState> {
   }
 
   void _navigateToPath(String path, {RouteSettings? routeSettings}) {
-    _navigationProvider.navigateToPath(path, _navigatorKey,
-        routeSettings: routeSettings);
+    _navigationProvider.navigateToPath(
+      path,
+      _navigatorKey,
+      routeSettings: routeSettings,
+    );
   }
 }

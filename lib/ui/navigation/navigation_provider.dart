@@ -5,6 +5,7 @@ import 'package:weatherforecast/ui/debug/debug_screen.dart';
 class NavigationProvider {
 
   static const DEBUG_ROUTE = '/debug';
+  static const HOMEPAGE_ROUTE = '/';
 
   final router = FluroRouter();
 
@@ -14,6 +15,7 @@ class NavigationProvider {
   });
 
   void defineRoutes() {
+    router.define(HOMEPAGE_ROUTE, handler: _debugScreenHandler);
     router.define(DEBUG_ROUTE, handler: _debugScreenHandler);
   }
 
