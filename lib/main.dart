@@ -13,6 +13,7 @@ import 'package:weatherforecast/data/repository/local/weather_local_repository.d
 import 'package:weatherforecast/data/repository/remote/weather_api_provider.dart';
 import 'package:weatherforecast/data/repository/remote/weather_remote_repository.dart';
 import 'package:weatherforecast/ui/app/app_bloc.dart';
+import 'package:weatherforecast/ui/main/bloc/main_screen_bloc.dart';
 import 'package:weatherforecast/ui/navigation/bloc/navigation_bloc.dart';
 import 'package:weatherforecast/ui/navigation/navigation_provider.dart';
 
@@ -56,6 +57,13 @@ class _FeatherAppState extends State<FeatherApp> {
           create: (context) => AppBloc(
             _applicationLocalRepository,
           ),
+        ),
+        BlocProvider<MainScreenBloc>(
+          create: (context) => MainScreenBloc(
+              _locationManager,
+              _weatherLocalRepository,
+              _weatherRemoteRepository,
+              _applicationLocalRepository),
         ),
         BlocProvider<NavigationBloc>(
           create: (context) => NavigationBloc(_navigation, _navigatorKey),

@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.1"
+  app_settings:
+    dependency: "direct main"
+    description:
+      name: app_settings
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   args:
     dependency: transitive
     description:
@@ -36,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.1"
+  bloc_test:
+    dependency: "direct dev"
+    description:
+      name: bloc_test
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "8.4.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -242,6 +256,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_swiper_null_safety:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "893326b4944ddf02544d33fc03e9d83537361279"
+      url: "https://github.com/lianyagang/flutter_swiper_null_safety.git"
+    source: git
+    version: "1.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -406,6 +429,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.15"
+  mocktail:
+    dependency: transitive
+    description:
+      name: mocktail
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   nested:
     dependency: transitive
     description:
@@ -424,6 +454,13 @@ packages:
     dependency: transitive
     description:
       name: package_config
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  package_info:
+    dependency: "direct main"
+    description:
+      name: package_info
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
@@ -698,6 +735,48 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  url_launcher:
+    dependency: "direct main"
+    description:
+      name: url_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.10"
+  url_launcher_linux:
+    dependency: transitive
+    description:
+      name: url_launcher_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  url_launcher_macos:
+    dependency: transitive
+    description:
+      name: url_launcher_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  url_launcher_platform_interface:
+    dependency: transitive
+    description:
+      name: url_launcher_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
+  url_launcher_web:
+    dependency: transitive
+    description:
+      name: url_launcher_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
+  url_launcher_windows:
+    dependency: transitive
+    description:
+      name: url_launcher_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
   vector_math:
     dependency: transitive
     description:

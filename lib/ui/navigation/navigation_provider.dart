@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:weatherforecast/ui/debug/debug_screen.dart';
+import 'package:weatherforecast/ui/main/main_screen.dart';
 
 class NavigationProvider {
 
@@ -14,8 +15,13 @@ class NavigationProvider {
     return const DebugScreen();
   });
 
+  final _mainScreenHandler = Handler(
+      handlerFunc: (BuildContext? context, Map<String, dynamic> params) {
+        return const MainScreen();
+      });
+
   void defineRoutes() {
-    router.define(HOMEPAGE_ROUTE, handler: _debugScreenHandler);
+    router.define(HOMEPAGE_ROUTE, handler: _mainScreenHandler);
     router.define(DEBUG_ROUTE, handler: _debugScreenHandler);
   }
 
