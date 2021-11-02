@@ -37,7 +37,16 @@ class _MainScreenState extends State<MainScreen> {
   late AppBloc _appBloc;
   late MainScreenBloc _mainScreenBloc;
   late NavigationBloc _navigationBloc;
-  
+
+  @override
+  void initState() {
+    super.initState();
+    _appBloc = BlocProvider.of(context);
+    _appBloc.add(LoadSettingsAppEvent());
+    _mainScreenBloc = BlocProvider.of(context);
+    _mainScreenBloc.add(LocationCheckMainScreenEvent());
+    _navigationBloc = BlocProvider.of(context);
+  }
   
   @override
   Widget build(BuildContext context) {
