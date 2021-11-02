@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:weatherforecast/data/repository/local/application_local_repository.dart';
+import 'package:weatherforecast/data/repository/local/fake_location_provider.dart';
 import 'package:weatherforecast/data/repository/local/location_manager.dart';
 import 'package:weatherforecast/data/repository/local/location_provider.dart';
 import 'package:weatherforecast/data/repository/local/storage_manager.dart';
@@ -31,7 +34,8 @@ class FeatherApp extends StatefulWidget {
 class _FeatherAppState extends State<FeatherApp> {
   final NavigationProvider _navigation = NavigationProvider();
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey();
-  final LocationManager _locationManager = LocationManager(LocationProvider());
+  final LocationManager _locationManager = LocationManager(
+      Platform.isMacOS ? FakeLocationProvider() : LocationProvider());
   final StorageManager _storageManager = StorageManager(StorageProvider());
   late WeatherLocalRepository _weatherLocalRepository;
   final WeatherRemoteRepository _weatherRemoteRepository =

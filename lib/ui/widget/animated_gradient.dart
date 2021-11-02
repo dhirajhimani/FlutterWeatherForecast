@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:weatherforecast/resources/config/application_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:weatherforecast/resources/config/application_colors.dart';
 
 class AnimatedGradientWidget extends StatefulWidget {
   final Duration duration;
@@ -41,13 +41,13 @@ class _AnimatedGradientWidgetState extends State<AnimatedGradientWidget> {
   void initState() {
     super.initState();
     if (widget.startGradientColors.isNotEmpty) {
-      colorList.add( widget.startGradientColors[0]);
-      colorList.add( widget.startGradientColors[1]);
+      colorList.add(widget.startGradientColors[0]);
+      colorList.add(widget.startGradientColors[1]);
       topColor = widget.startGradientColors[0];
       bottomColor = widget.startGradientColors[1];
     }
 
-    _startTimer = Timer(const Duration(seconds: 1), (){
+    _startTimer = Timer(const Duration(seconds: 1), () {
       if (mounted) {
         setState(() {
           bottomColor = colorList[1];

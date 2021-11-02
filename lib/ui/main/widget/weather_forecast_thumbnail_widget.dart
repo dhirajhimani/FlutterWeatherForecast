@@ -23,8 +23,61 @@ class WeatherForecastThumbnailWidget extends StatefulWidget {
 
 class _WeatherForecastThumbnailWidgetState
     extends State<WeatherForecastThumbnailWidget> {
+  late NavigationBloc _navigationBloc;
+
+  @override
+  void initState() {
+    _navigationBloc = BlocProvider.of(context);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Text('Dhiraj');
+    final holder = widget._holder;
+    var temperature = holder.averageTemperature;
+    if (!widget._isMetricUnits) {
+      temperature = WeatherHelper.convertCelsiusToFahrenheit(temperature!);
+    }
+
+    return Material(
+      key: const Key("weather_forecast_thumbnail_widget"),
+      color: Colors.transparent,
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: InkWell(
+          onTap: _onWeatherForecastClicked,
+          child: Container(
+            padding: const EdgeInsets.only(left: 4, right: 4, top: 8),
+            child: Column(
+              children: <Widget>[
+                Text(holder.dateShortFormatted!,
+                    key: const Key("weather_forecast_thumbnail_date"),
+                    textDirection: TextDirection.ltr,
+                    style: Theme.of(context).textTheme.bodyText2),
+                const SizedBox(height: 4),
+                Image.asset(holder.weatherCodeAsset!,
+                    key: const Key("weather_forecast_thumbnail_icon"),
+                    width: 30,
+                    height: 30),
+                const SizedBox(height: 4),
+                Text(
+                    WeatherHelper.formatTemperature(
+                      temperature: temperature,
+                      metricUnits: widget._isMetricUnits,
+                    ),
+                    key: const Key("weather_forecast_thumbnail_temperature"),
+                    textDirection: TextDirection.ltr,
+                    style: Theme.of(context).textTheme.bodyText2),
+                const SizedBox(height: 4),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _onWeatherForecastClicked() {
+    _navigationBloc.add(ForecastScreenNavigationEvent(widget._holder));
   }
 }

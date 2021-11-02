@@ -25,8 +25,53 @@ class WeatherForecastThumbnailListWidget extends StatefulWidget {
 
 class WeatherForecastThumbnailListWidgetState
     extends State<WeatherForecastThumbnailListWidget> {
+  late AppBloc _appBloc;
+
+  @override
+  void initState() {
+    _appBloc = BlocProvider.of(context);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Text('Dhiraj');
+    ///If forecast list response is empty, then it won't be displayed.
+    ///MainScreen will present error to user.
+    if (widget.forecastListResponse != null) {
+      return buildForecastWeatherContainer(widget.forecastListResponse!);
+    } else {
+      return const SizedBox();
+    }
+  }
+
+  Widget buildForecastWeatherContainer(
+      WeatherForecastListResponse forecastListResponse) {
+    final List<WeatherForecastResponse> forecastList =
+    forecastListResponse.list!;
+    final map = WeatherHelper.getMapForecastsForSameDay(forecastList);
+    return Row(
+      key: const Key("weather_forecast_thumbnail_list_widget_container"),
+      textDirection: TextDirection.ltr,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: buildForecastWeatherWidgets(map, forecastListResponse),
+    );
+  }
+
+  List<Widget> buildForecastWeatherWidgets(
+      Map<String, List<WeatherForecastResponse>> map,
+      WeatherForecastListResponse? data) {
+    final List<Widget> forecastWidgets = [];
+    map.forEach((key, value) {
+      forecastWidgets.add(WeatherForecastThumbnailWidget(
+        WeatherForecastHolder(value, data!.city, widget.system),
+        _appBloc.isMetricUnits(),
+      ));
+    });
+    return forecastWidgets;
   }
 }
